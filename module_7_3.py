@@ -6,7 +6,7 @@ class WordsFinder:
         all_words = {}  # Словарь для хранения слов по файлам
         for file_name in self.file_names:
             with open(file_name, 'r', encoding='utf-8') as file:
-                words = file.read().lower().split()  # Приводим к нижнему регистру и разбиваем на слова
+                words = file.read().lower().replace('!', '').split()  # Приводим к нижнему регистру и разбиваем на слова
                 all_words[file_name] = words  # Записываем в словарь, ключ — имя файла
         return all_words
 
@@ -27,7 +27,7 @@ class WordsFinder:
             return results
 
 
-wrd1 = WordsFinder('test2.txt', 'test1.txt')
+wrd1 = WordsFinder('Walt Whitman - O Captain! My Captain!.txt')
 print(wrd1.get_all_words())
-print(wrd1.find('for'))
-print(wrd1.count_word('text'))
+print(wrd1.find('captain'))
+print(wrd1.count_word('captain'))
